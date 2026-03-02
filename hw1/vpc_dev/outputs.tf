@@ -3,9 +3,8 @@ output "network_id" {
 }
 
 output "subnet_id" {
-  value =  [
-    for k in yandex_vpc_subnet.develop: {
-      id   = k.id
-    }     
-  ] 
+  value =  {
+    for k in yandex_vpc_subnet.develop: 
+      k.name => k.id
+  }
 }

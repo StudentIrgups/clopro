@@ -52,3 +52,27 @@ variable "vm_platform_id" {
   default     = "standard-v3"
   description = "Platform id"
 }
+
+variable "nat_instance_ip" {
+  type = string
+  default = "192.168.10.254"
+  description = "NAT instance IP"
+}
+
+variable "public_cidr" {
+  type = string
+  default = "192.168.10.0/24"
+  description = "Public CIDR"
+}
+
+variable "private_cidr" {
+  type = string
+  default = "192.168.20.0/24"
+  description = "Private CIDR"
+}
+
+variable "nat_instance_image_id" {
+  type = string
+  default = "fd80mrhj8fl2oe87o4e1"
+  description = "NAT image ID"
+}
