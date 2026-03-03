@@ -16,11 +16,10 @@ variable "vpc_name" {
 
 variable "mass_zones" {
   type = list(object({
-    vpc_name = string
-    subnet_name = string
-    cidr = string
+    vpc_name       = string
+    subnet_name    = string
+    cidr           = string
+    route_table_id = string
   }))
 }
-
-
 

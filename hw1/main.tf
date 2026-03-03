@@ -4,8 +4,8 @@ module "vpc_dev" {
   cloud_id     = var.cloud_id
   folder_id    = var.folder_id
   mass_zones   = [
-    { vpc_name = "ru-central1-a", subnet_name = "public", cidr = var.public_cidr },
-    { vpc_name = "ru-central1-a", subnet_name = "private", cidr = var.private_cidr },
+    { vpc_name = "ru-central1-a", subnet_name = "public", cidr = var.public_cidr, route_table_id = "" },
+    { vpc_name = "ru-central1-a", subnet_name = "private", cidr = var.private_cidr, route_table_id = yandex_vpc_route_table.lab-rt-a.id },
   ]
 }
 
@@ -31,7 +31,7 @@ resource "yandex_compute_instance" "web" {
   network_interface {
     subnet_id  = count.index % 2 == 0 ? module.vpc_dev.subnet_id["public"]:module.vpc_dev.subnet_id["private"]
     ip_address = count.index % 2 == 0 && count.index == 0 ? var.nat_instance_ip:""
-    nat        = count.index % 2 != 0 || count.index == 0 ? false:true
+    nat        = count.index % 2 != 0 ? false:true
   }
   metadata = {
     user-data          = data.template_file.cloudinit.rendered
