@@ -76,3 +76,9 @@ variable "nat_instance_image_id" {
   default = "fd80mrhj8fl2oe87o4e1"
   description = "NAT image ID"
 }
+
+variable "lamp_image_id" {
+  type = string
+  default = "fd827b91d99psvq5fjit"
+  description = "NAT image ID"
+}

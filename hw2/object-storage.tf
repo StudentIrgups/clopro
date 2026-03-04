@@ -1,6 +1,6 @@
 resource "yandex_storage_bucket" "storage" {
   bucket   = "alexbeznosov04032026"
-  max_size = 1048576
+  max_size = 1024*1024*1024
   anonymous_access_flags {
     read        = true
     list        = false
