@@ -1,0 +1,42 @@
+#cloud-config
+users:
+  - name: ubuntu
+    groups: sudo
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+package_update: true
+package_upgrade: false
+
+write_files:
+  - path: "/usr/local/etc/change.sh"
+    permissions: 0755
+    owner: root
+    content: |
+      #!/bin/sh
+
+      until systemctl is-active apache2; do
+        echo "Waiting for Apache2 to start..."
+        sleep 2
+      done
+
+      OUTPUT_FILE="/var/www/html/index.html"
+
+      cat <<EOF > "$OUTPUT_FILE"
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <meta charset="UTF-8">
+          <title>Картинка</title>
+      </head>
+      <body>
+          <h1>Это картинка</h1>                            
+          <img src="https://storage.yandexcloud.net/${storage_name}/${file}" alt="Moto">
+      </body>
+      </html>
+      EOF
+runcmd:
+  - ["/usr/local/etc/change.sh"]
+  - 'echo | ip -4 addr show eth0 | sed -ne "s/^[[:space:]]*inet[[:space:]]\([0-9.]\+\)\/.*/\1/p" | head -n 1 | xargs echo "<h2>ipaddress: </h2>" | sudo tee -a /var/www/html/index.html'
+

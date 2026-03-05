@@ -4,8 +4,8 @@ module "vpc_dev" {
   cloud_id     = var.cloud_id
   folder_id    = var.folder_id
   mass_zones   = [
-    { vpc_name = "ru-central1-a", subnet_name = "public", cidr = var.public_cidr, route_table_id = "" },
-    { vpc_name = "ru-central1-a", subnet_name = "private", cidr = var.private_cidr, route_table_id = yandex_vpc_route_table.lab-rt-a.id },
+    { vpc_name = var.default_zone, subnet_name = "public", cidr = var.public_cidr, route_table_id = "" },
+    { vpc_name = var.default_zone, subnet_name = "private", cidr = var.private_cidr, route_table_id = yandex_vpc_route_table.lab-rt-a.id },
   ]
 }
 

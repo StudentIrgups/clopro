@@ -1,21 +1,14 @@
 ## Task 1
 
-[vpc module](./vpc_dev/)
+[object-storage.tf](./object-storage.tf)
 
-[main.tf](main.tf)
+[instance-group.tf](./instance-group.tf)
 
-[route table](route-table.tf)
+[cloud-init-lamp](./cloud-init-lamp.yml)
 
-### Доступ в итернет из публичного хоста
+[network-load-balancer](./network-load-balancer.tf)
 
 ![alt text](./images/0.png)
-
-### Доступ в итернет из приватного хоста (не понятно, почему в первом задании не указано, что NAT адресс у 192.168.10.254 должен быть, иначе из приватной подсети нет доступа в интернет)
-
-```
-ssh -J ubuntu@89.169.131.145 ubuntu@192.168.20.19
-
-```
 
 ![alt text](./images/1.png)
 

@@ -9,13 +9,13 @@ resource "yandex_storage_bucket" "storage" {
 }
 
 resource "local_file" "picture" {
-  filename = "my-picture.png"
-  content_base64 = filebase64("./images/0.png")
+    filename = "my-picture.jpg"
+    content_base64 = filebase64("./images/my-picture.jpg")
 }
 
 resource "yandex_storage_object" "object" {
   bucket = yandex_storage_bucket.storage.id
   key    = local_file.picture.filename
   source = local_file.picture.filename
-  content_type = "png"
+  content_type = "jpg"
 }
