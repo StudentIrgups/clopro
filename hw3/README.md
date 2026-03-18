@@ -2,11 +2,6 @@
 
 [object-storage.tf](./object-storage.tf)
 
-[instance-group.tf](./instance-group.tf)
-
-[cloud-init-lamp](./cloud-init-lamp.yml)
-
-[network-load-balancer](./network-load-balancer.tf)
 
 ![alt text](./images/0.png)
 
