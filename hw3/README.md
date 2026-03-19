@@ -11,9 +11,9 @@
 ### 1.1
 
 [object-storage.tf](./object-storage.tf)
-
+<kbd>
 ![alt text](./images/0.png)
-
+</kbd>
 ![alt text](./images/1.png)
 
 ### 1.2
