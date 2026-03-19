@@ -1,3 +1,11 @@
+<style>
+  img {
+    border: 2px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+</style>
 ## Task 1
 
 ### 1.1
