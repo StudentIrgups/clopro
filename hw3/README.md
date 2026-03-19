@@ -4,21 +4,15 @@
 
 [object-storage.tf](./object-storage.tf)
 
-<kbd>
 ![alt text](./images/0.png)
-</kbd>
 
-<kbd>
 ![alt text](./images/1.png)
-</kbd>
 
 ### 1.2
 
 Создал новое хранилище с веб-сайтом и https:
 
-<kbd>
 ![alt text](./images/2.png)
-</kbd>
 
 Добавил [сертификат](./certificate/main.tf). 
 
