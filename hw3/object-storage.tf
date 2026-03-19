@@ -43,21 +43,6 @@ resource "yandex_storage_bucket" "storage-two" {
   }
 }
 
-resource "yandex_dns_zone" "zone-to-check" {
-  name        = "zone-to-check"
-  zone             = "alexbeznosov17032026two.website.ru."
-  public           = true
-  private_networks = [module.vpc_dev.network_id]
-}
-
-resource "yandex_dns_recordset" "site_alias" {
-  zone_id = yandex_dns_zone.zone-to-check.id
-  name    = "_acme-challenge"
-  type    = "CNAME"
-  ttl     = 300
-  data    = ["fpq0gubkk3sm3d76ms8b.cm.yandexcloud.net."]
-}
-
 resource "local_file" "picture" {
     filename = "my-picture.jpg"
     content_base64 = filebase64("./images/my-picture.jpg")
