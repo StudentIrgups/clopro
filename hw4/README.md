@@ -1,15 +1,15 @@
 ## Task 1
 
-[object-storage.tf](./object-storage.tf)
+### 1.1
 
-[instance-group.tf](./instance-group.tf)
+[db.tf](./db.tf)
 
-[cloud-init-lamp](./cloud-init-lamp.yml)
-
-[network-load-balancer](./network-load-balancer.tf)
+[main.tf](./main.tf)
 
 ![alt text](./images/0.png)
 
-![alt text](./images/1.png)
+### 1.2
 
-![alt text](./images/2.png)
+[kube.tf](./kube.tf)
+
+![alt text](./images/1.png)

@@ -36,6 +36,14 @@ resource "yandex_kubernetes_cluster" "regional-cluster" {
     }
     version   = "1.31"
     public_ip = true
+
+    master_logging {
+      enabled                    = true
+      kube_apiserver_enabled     = true
+      cluster_autoscaler_enabled = true
+      events_enabled             = true
+      audit_enabled              = true
+    }
   }
 
   service_account_id      = yandex_iam_service_account.k8s-sa.id
@@ -44,6 +52,7 @@ resource "yandex_kubernetes_cluster" "regional-cluster" {
   kms_provider {
     key_id = yandex_kms_symmetric_key.key-a.id
   }
+  
 }
 
 resource "yandex_kubernetes_node_group" "node-group" {
@@ -61,6 +70,7 @@ resource "yandex_kubernetes_node_group" "node-group" {
       size = 30
     }
     network_interface {
+      nat        = true
       subnet_ids = [ for k in module.vpc_dev.subnet_id : 
         k.id if strcontains(k.name, "public")
       ]      
